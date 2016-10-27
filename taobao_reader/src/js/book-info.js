@@ -3,12 +3,13 @@
  */
 $(document).ready(function(){
     var bookId = getQueryString("bid");
+    var timestamp = Date.parse(new Date())/1000;
     var tsid = getQueryString("tsid");
     var placeId = getQueryString("placeId");
     var appVer = getQueryString("appVer");
 
-    var data = {"bookId": bookId, "timestamp": Date.parse(new Date())/1000 };
 
+    var data = {"bookId": bookId, "timestamp": timestamp.toString()};
     var md5key = '37e81a9d8f02596e1b895d07c171d5c9';
     var sign = md5(JSON.stringify(data)+md5key);
     alert("raw = " + (JSON.stringify(data)+md5key) + ", sign = " + sign);
