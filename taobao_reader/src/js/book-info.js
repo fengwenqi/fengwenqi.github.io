@@ -2,11 +2,12 @@
  * Created by LeeHong on 16/10/27.
  */
 $(document).ready(function(){
+    var bookId = getQueryString("bid");
     var tsid = getQueryString("tsid");
     var placeId = getQueryString("placeId");
     var appVer = getQueryString("appVer");
 
-    var data = {"bookId": 172679, "timestamp": Date.parse(new Date())/1000 };
+    var data = {"bookId": bookId, "timestamp": Date.parse(new Date())/1000 };
     var md5key = '37e81a9d8f02596e1b895d07c171d5c9';
     var sign = md5(data+md5key);
     alert("sign = " + sign);
