@@ -17,7 +17,7 @@ $(document).ready(function(){
     $("#gotoChapter").click(function () {
         $.post("http://tbwalden.ishuqi.com/andapi/book/info",
             {
-                "data": data,
+                "data": JSON.stringify(data),
                 "encryptType": -1,
                 "tsid": tsid,
                 "placeId": placeId,
