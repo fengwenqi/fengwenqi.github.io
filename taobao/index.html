@@ -135,9 +135,25 @@
         /**
  * Created by LeeHong on 16/10/27.
  */
-$(document).ready(function(){
+/**
+ * 获取URL请求参数
+ *
+ * @param name Query key.
+ * @returns {*}
+ */
+function getQueryString(name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+    var r = window.location.search.substr(1).match(reg);
+    if (r != null) return decodeURI(r[2]);
+    return null;
+}
 
-    alert("111111");
+        /**
+ * Created by LeeHong on 16/10/27.
+ */
+$(document).ready(function(){
+    var val = getQueryString("tsid");
+    alert("tsid = " + val);
 });
     </script>
 </head>
