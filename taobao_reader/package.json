@@ -1,0 +1,27 @@
+{
+  "name": "WEB_Demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "ArrayAndJsonTest.js",
+  "dependencies": {},
+  "devDependencies": {
+    "browser-sync": "^2.17.5",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-clean-css": "^2.0.13",
+    "gulp-sass": "^2.3.2",
+    "gulp-swig": "^0.8.0",
+    "uglify-js": "^2.7.3"
+  },
+  "scripts": {
+    "build": "gulp build",
+    "dev": "gulp dev",
+    "sass": "gulp sass",
+    "serve": "gulp serve",
+    "swig": "gulp swig",
+    "uglify": "uglifyjs src/js/flexible.js -m -c -o src/js/flexible.min.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

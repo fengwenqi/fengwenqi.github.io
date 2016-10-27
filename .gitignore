@@ -44,6 +44,6 @@ docs/**/*
 **/.idea/uiDesigner.xml
 **/.idea/runConfigurations.xml
 
-/node_modules
+taobao_reader/node_modules/
 
 
