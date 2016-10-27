@@ -159,9 +159,10 @@ $(document).ready(function(){
     var appVer = getQueryString("appVer");
 
     var data = {"bookId": bookId, "timestamp": Date.parse(new Date())/1000 };
+
     var md5key = '37e81a9d8f02596e1b895d07c171d5c9';
-    var sign = md5(data+md5key);
-    alert("sign = " + sign);
+    var sign = md5(JSON.stringify(data)+md5key);
+    alert("raw = " + (JSON.stringify(data)+md5key) + ", sign = " + sign);
 
     $("#gotoChapter").click(function () {
         $.post("http://tbwalden.ishuqi.com/andapi/book/info",
