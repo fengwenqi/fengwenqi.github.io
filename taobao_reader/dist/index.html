@@ -213,13 +213,14 @@ Book.prototype = {
         $(".unit").text(unit);
         if(this.book.disType == "0") {
             $(".sale-deadline").hide();
-            alert("打折信息：" + this.book.disInfo);
+            alert("无打折信息" );
         }else if(this.book.disType == "11") {
-            alert("打折信息：" + this.book.disInfo);
+            alert("打折信息：" + JSON.stringify(this.book.disInfo));
         }
         $(".desc").text(this.book.desc);
         $("#author-introduce").text(this.book.authorName);
 
+        alert("tag长度：" + this.book.tag.size);
         var oNAV = document.createElement("nav");
         var oUL = document.createElement("ul");
         var oFragment = document.createDocumentFragment();
