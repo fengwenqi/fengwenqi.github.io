@@ -69,7 +69,7 @@ Book.prototype = {
         $(".desc").text(this.book.desc);
         $("#author-introduce").text(this.book.authorName);
 
-        alert("tag长度：" + this.book.tag.length);
+        alert("tag长度：" + this.book.tag);
         var oNAV = document.createElement("nav");
         var oUL = document.createElement("ul");
         var oFragment = document.createDocumentFragment();
