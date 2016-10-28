@@ -202,6 +202,35 @@ Book.prototype = {
     initView: function () {
         $(".top #cover img").attr("src", this.book.coverUrl);
         $("#book-name").text(this.book.bookName);
+        $("#author-name").text(this.book.authorName);
+        $("#book-words").text(this.book.words);
+        $("#price").text(this.book.price);
+        $("#final-price").text(this.book.finalPrice);
+        var unit = "淘豆";
+        if(this.book.payMode == "1") {
+            unit = "淘豆/千字";
+        }
+        $(".unit").text(unit);
+        if(this.book.disType == "0") {
+            $(".sale-deadline").hide();
+            alert("打折信息：" + this.book.disInfo);
+        }else if(this.book.disType == "11") {
+            alert("打折信息：" + this.book.disInfo);
+        }
+        $(".desc").text(this.book.desc);
+        $("#author-introduce").text(this.book.authorName);
+
+        var oNAV = document.createElement("nav");
+        var oUL = document.createElement("ul");
+        var oFragment = document.createDocumentFragment();
+        for(var i = 0, count = this.book.tag.size; i < count; ++i) {
+            var oLi = document.createElement("li");
+            oLi.innerHTML = "<a href='###'>" + this.book.tag[i].tagName +"</a>";
+            oFragment.appendChild(oLi);
+        }
+        oUL.appendChild(oFragment);
+        oNAV.appendChild(oUL);
+        $(".tags").append(oNAV);
     }
 }
     </script>
@@ -215,7 +244,7 @@ Book.prototype = {
                 </figure>
                 <h2 id="book-name">天龙八部降龙</h2>
                 <p><span id="author-name">张信哲</span>&nbsp;&nbsp;<span id="book-words">960</span>万字</p>
-                <p><span id="final-price">0.5淘豆/千字</span>&nbsp;&nbsp;<span id="price">0.8淘豆/千字</span></p>
+                <p><span id="final-price">0.5</span><span class="unit">淘豆/千字</span>&nbsp;&nbsp;<span id="price">0.8</span><span class="unit">淘豆/千字</span></p>
                 <p class="sale-deadline"><span>剩余优惠：</span>
                     <span id="day"><span>0</span><span>1</span></span>天
                     <span id="hour"><span>2</span><span>2</span></span>时
@@ -234,13 +263,6 @@ Book.prototype = {
                 <p id="author-introduce">出生于德国东部城市格赖夫斯瓦尔德，德国籍足球运动员，场上司职中场，效力于皇家马德里足球俱乐部。后来加入到了拜仁慕尼黑俱乐部。</p>
             </section>
             <section class="tags">
-                <nav>
-                    <ul>
-                        <li><a href="###">保镖</a></li>
-                        <li><a href="###">我是特种</a></li>
-                        <li><a href="###">仙境</a></li>
-                    </ul>
-                </nav>
             </section>
         </article>
         <article class="recommend-books">

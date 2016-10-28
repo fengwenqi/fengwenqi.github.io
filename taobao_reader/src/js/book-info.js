@@ -51,5 +51,34 @@ Book.prototype = {
     initView: function () {
         $(".top #cover img").attr("src", this.book.coverUrl);
         $("#book-name").text(this.book.bookName);
+        $("#author-name").text(this.book.authorName);
+        $("#book-words").text(this.book.words);
+        $("#price").text(this.book.price);
+        $("#final-price").text(this.book.finalPrice);
+        var unit = "淘豆";
+        if(this.book.payMode == "1") {
+            unit = "淘豆/千字";
+        }
+        $(".unit").text(unit);
+        if(this.book.disType == "0") {
+            $(".sale-deadline").hide();
+            alert("打折信息：" + this.book.disInfo);
+        }else if(this.book.disType == "11") {
+            alert("打折信息：" + this.book.disInfo);
+        }
+        $(".desc").text(this.book.desc);
+        $("#author-introduce").text(this.book.authorName);
+
+        var oNAV = document.createElement("nav");
+        var oUL = document.createElement("ul");
+        var oFragment = document.createDocumentFragment();
+        for(var i = 0, count = this.book.tag.size; i < count; ++i) {
+            var oLi = document.createElement("li");
+            oLi.innerHTML = "<a href='###'>" + this.book.tag[i].tagName +"</a>";
+            oFragment.appendChild(oLi);
+        }
+        oUL.appendChild(oFragment);
+        oNAV.appendChild(oUL);
+        $(".tags").append(oNAV);
     }
 }
