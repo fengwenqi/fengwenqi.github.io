@@ -110,11 +110,11 @@ Book.prototype = {
         // }
         // this.createNav(oFragment);
         // $(".tags").append(oNAV);
-    },
-    // createNav: function (oFragment) {
-    //     var oNAV = document.createElement("nav");
-    //     var oUL = document.createElement("ul");
-    //     oUL.appendChild(oFragment);
-    //     oNAV.appendChild(oUL);
-    // }
+        // createNav: function (oFragment) {
+        //     var oNAV = document.createElement("nav");
+        //     var oUL = document.createElement("ul");
+        //     oUL.appendChild(oFragment);
+        //     oNAV.appendChild(oUL);
+        // }
+    }
 }
