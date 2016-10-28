@@ -39,6 +39,7 @@ gulp.task('serve', function() {
 
 gulp.task('watch', function() {
     gulp.watch('src/**/*.html', ['swig'])
+    gulp.watch('src/**/*.js', ['swig'])
     gulp.watch('src/**/*.scss', ['sass'])
 })
 
