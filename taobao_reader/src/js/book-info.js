@@ -69,11 +69,11 @@ Book.prototype = {
         $(".desc").text(this.book.desc);
         $("#author-introduce").text(this.book.authorName);
 
-        alert("tag长度：" + this.book.tag.size);
+        alert("tag长度：" + this.book.tag.length);
         var oNAV = document.createElement("nav");
         var oUL = document.createElement("ul");
         var oFragment = document.createDocumentFragment();
-        for(var i = 0, count = this.book.tag.size; i < count; ++i) {
+        for(var i = 0, count = this.book.tag.length; i < count; ++i) {
             var oLi = document.createElement("li");
             oLi.innerHTML = "<a href='###'>" + this.book.tag[i].tagName +"</a>";
             oFragment.appendChild(oLi);
