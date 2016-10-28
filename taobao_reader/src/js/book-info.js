@@ -17,6 +17,15 @@ $(document).ready(function(){
     // 初期隐藏画面。
     $(".container").hide();
 
+    var createAjax = function(url, data) {
+        return $.ajax({
+            type: "POST",
+            url: url,
+            async: true,
+            cache: false,
+            data: data
+        });
+    };
     // 异步请求书籍信息。
     // $.post("http://tbwalden.ishuqi.com/andapi/book/info",
     //     {
@@ -55,21 +64,9 @@ $(document).ready(function(){
                 book.initView();
                 $(".container").show();
             }
-        })
-        .fail(function () {
-            alert("ajax请求失败！")
         });
 });
 
-function createAjax(url, data) {
-    return $.ajax({
-        type: "POST",
-        url: url,
-        async: true,
-        cache: false,
-        data: data
-    });
-}
 /**
  * The Book class is used to render view with the book data.
  *
@@ -83,6 +80,7 @@ function Book(book) {
 
 Book.prototype = {
     initView: function () {
+        alert("data2=" + this.book.authorName);
         $(".top #cover img").attr("src", this.book.coverUrl);
         $("#book-name").text(this.book.bookName);
         $("#author-name").text(this.book.authorName);
