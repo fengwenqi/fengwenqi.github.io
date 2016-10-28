@@ -49,6 +49,7 @@ $(document).ready(function(){
         .done(function (result) {
             alert("返回的状态是：" + result.status + ", 返回的书名是：" + result.data.bookName);
             if(status == "success" && result.status == 200){
+                alert("data=" + result.data.authorName);
                 // 根据请求的书本信息，渲染画面。
                 var book = new Book(result.data);
                 book.initView();
