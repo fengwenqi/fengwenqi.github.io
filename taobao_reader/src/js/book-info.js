@@ -53,9 +53,9 @@ $(document).ready(function(){
         .done(function (bookResult, recomResult) {
             alert("返回的结果1是：" + bookResult[0].status + ", 返回的结果2是：" + bookResult[0].status);
             if(bookResult[0].status == 200 && recomResult[0].status == 200){
-                alert("作者ID：" + bookResult[0].authorId);
+                alert("作者ID：" + bookResult[0].data.authorId);
                 // 设置作者其他作品的请求参数。
-                var proListData = {"authorId": bookResult[0].authorId, "timestamp": timestamp.toString(), "pageSize": 3, "page": 1};
+                var proListData = {"authorId": bookResult[0].data.authorId, "timestamp": timestamp.toString(), "pageSize": 3, "page": 1};
                 var proListParam = {
                     "data": JSON.stringify(proListData),
                     "encryptType": "-1",
