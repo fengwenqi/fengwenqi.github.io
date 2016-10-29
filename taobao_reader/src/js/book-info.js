@@ -53,15 +53,16 @@ $(document).ready(function(){
         .done(function (bookResult, recomResult) {
             alert("返回的结果1是：" + bookResult[0].status + ", 返回的结果2是：" + bookResult[0].status);
             if(bookResult[0].status == 200 && recomResult[0].status == 200){
+                alert("作者ID：" + bookResult[0].authorId);
                 // 设置作者其他作品的请求参数。
-                var proListData = {"authorId": bookResult[0].authorId, "timestamp": timestamp, "pageSize": 3, "page": 1};
+                var proListData = {"authorId": bookResult[0].authorId, "timestamp": timestamp.toString(), "pageSize": 3, "page": 1};
                 var proListParam = {
                     "data": JSON.stringify(proListData),
-                    "encryptType": -1,
+                    "encryptType": "-1",
                     "tsid": tsid,
                     "placeId": placeId,
                     "appVer": appVer,
-                    "sign": md5(JSON.stringify(recomData)+md5key)
+                    "sign": md5(JSON.stringify(proListData)+md5key)
                 };
 
                 // 异步请求作者其他作品。
@@ -92,7 +93,6 @@ function Book(book, recomBookList) {
 
 Book.prototype = {
     initView: function () {
-        alert("data2=" + this.book.authorName);
         $(".top #cover img").attr("src", this.book.coverUrl);
         $("#book-name").text(this.book.bookName);
         $("#author-name").text(this.book.authorName);
@@ -121,7 +121,6 @@ Book.prototype = {
         $(".tags").append(this.createNav(oFragment));
 
         oFragment = document.createDocumentFragment();
-        alert("推荐书籍信息：" + JSON.stringify(this.recom.bookList));
         for(var i = 0, count = this.recom.bookList.length; i < count; ++i) {
             var oLi = document.createElement("li");
             oLi.innerHTML = "<a href='###'><img src='" + this.recom.bookList[i].coverUrl + "'/>"
