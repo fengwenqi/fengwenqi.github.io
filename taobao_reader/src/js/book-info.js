@@ -108,13 +108,13 @@ Book.prototype = {
             oLi.innerHTML = "<a href='###'>" + this.book.tag[i].tagName +"</a>";
             oFragment.appendChild(oLi);
         }
-        this.createNav(oFragment);
-        $(".tags").append(oNAV);
+        $(".tags").append(this.createNav(oFragment));
     },
     createNav: function (oFragment) {
         var oNAV = document.createElement("nav");
         var oUL = document.createElement("ul");
         oUL.appendChild(oFragment);
         oNAV.appendChild(oUL);
+        return oNAV;
     }
 }
