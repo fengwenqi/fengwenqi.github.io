@@ -140,12 +140,12 @@ Book.prototype = {
         $(".author-other-books .title").after(this.createNav(oFragment));
 
         // 出版信息
-        var publish = "<section><p> 出版：" + this.book.pubInfo.press + "<br/>"
-                        + "字数：" + this.book.words + "万字<br/>"
-                        + "ISBN：" + this.book.pubInfo.isbn +"<br/>"
-                        + "出版时间：" + new Date().setTime(this.book.pubInfo.pubTime * 1000).toLocaleDateString()
-                        + "</p><section>";
-        $(".publish-info aside").before(publish);
+        // var publish = "<section><p> 出版：" + this.book.pubInfo.press + "<br/>"
+        //                 + "字数：" + this.book.words + "万字<br/>"
+        //                 + "ISBN：" + this.book.pubInfo.isbn +"<br/>"
+        //                 + "出版时间：" + new Date().setTime(this.book.pubInfo.pubTime * 1000).toLocaleDateString()
+        //                 + "</p><section>";
+        // $(".publish-info aside").before(publish);
     },
     createNav: function (oFragment) {
         var oNAV = document.createElement("nav");
