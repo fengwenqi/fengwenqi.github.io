@@ -164,27 +164,6 @@ $(document).ready(function(){
     // 初期隐藏画面。
     $(".container").hide();
 
-    // 异步请求书籍信息。
-    // $.post("http://tbwalden.ishuqi.com/andapi/book/info",
-    //     {
-    //         "data": JSON.stringify(data),
-    //         "encryptType": -1,
-    //         "tsid": tsid,
-    //         "placeId": placeId,
-    //         "appVer": appVer,
-    //         "sign": sign
-    //     },
-    //     function (result, status) {
-    //         alert("返回的状态是：" + result.status + ", 返回的书名是：" + result.data.bookName);
-    //         if(status == "success" && result.status == 200){
-    //             // 根据请求的书本信息，渲染画面。
-    //             var book = new Book(result.data);
-    //             book.initView();
-    //             tbreader.closeLoading("");
-    //             $(".container").show();
-    //         }
-    //     });
-
     var createAjax = function(url, data) {
         return $.ajax({
             type: "POST",
@@ -195,7 +174,7 @@ $(document).ready(function(){
         });
     };
 
-    // 设置请求数据。
+    // 设置书籍的请求参数。
     var data = {"bookId": bookId, "timestamp": timestamp.toString()};
     var sign = md5(JSON.stringify(data)+md5key);
     var bookParam = {
@@ -206,6 +185,7 @@ $(document).ready(function(){
         "appVer": appVer,
         "sign": sign
     };
+    // 设置推荐书籍的请求参数。
     var recomData = {"bookId": parseInt(bookId), "pageSize": 3, "timestamp": timestamp};
     var recomSign = md5(JSON.stringify(recomData)+md5key);
     var recomParam = {
@@ -216,15 +196,35 @@ $(document).ready(function(){
         "appVer": appVer,
         "sign": recomSign
     };
-    $.when(createAjax("http://tbwalden.ishuqi.com/andapi/book/info", bookParam),createAjax("http://tbwalden.ishuqi.com/andapi/booklist/recom", recomParam))
-        .done(function (result1, result2) {
-            alert("返回的结果1是：" + result1[0].status + ", 返回的结果2是：" + result1[0].status);
-            if(result1[0].status == 200 && result2[0].status == 200){
-                // 渲染书籍信息画面。
-                var book = new Book(result1[0].data, result2[0].data);
-                book.initView();
-                tbreader.closeLoading("");
-                $(".container").show();
+
+    // 异步请求书籍信息。
+    $.when( createAjax("http://tbwalden.ishuqi.com/andapi/book/info", bookParam),
+            createAjax("http://tbwalden.ishuqi.com/andapi/booklist/recom", recomParam)
+            )
+        .done(function (bookResult, recomResult) {
+            alert("返回的结果1是：" + bookResult[0].status + ", 返回的结果2是：" + bookResult[0].status);
+            if(bookResult[0].status == 200 && recomResult[0].status == 200){
+                // 设置作者其他作品的请求参数。
+                var proListData = {"authorId": bookResult[0].authorId, "timestamp": timestamp, "pageSize": 3, "page": 1};
+                var proListParam = {
+                    "data": JSON.stringify(proListData),
+                    "encryptType": -1,
+                    "tsid": tsid,
+                    "placeId": placeId,
+                    "appVer": appVer,
+                    "sign": md5(JSON.stringify(recomData)+md5key)
+                };
+
+                // 异步请求作者其他作品。
+                createAjax("http://tbwalden.ishuqi.com/andapi/author/prolist", proListParam)
+                    .done(function (proListResult) {
+                        alert("作者其他作品的结果是：" + proListResult.status);
+                        // 渲染书籍信息画面。
+                        var book = new Book(bookResult[0].data, recomResult[0].data);
+                        book.initView();
+                        tbreader.closeLoading("");
+                        $(".container").show();
+                });
             }
         });
 });
