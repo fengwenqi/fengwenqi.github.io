@@ -66,13 +66,13 @@ $(document).ready(function(){
         "sign": recomSign
     };
     $.when(createAjax("http://tbwalden.ishuqi.com/andapi/book/info", bookParam),createAjax("http://tbwalden.ishuqi.com/andapi/booklist/recom", recomParam))
-        .done(function (result1) {
-            alert("返回的结果是：" + result1[0].status);
+        .done(function (result1, result2) {
+            alert("返回的结果1是：" + result1[0].status + ", 返回的结果2是：" + result1[0].status);
             // alert("返回的状态是：" + result1.status + ", 返回的书名是：" + result1.data.bookName);
             // alert("返回的状态是：" + result2.status + ", 返回的书名是：" + result2.data);
-            if(result1.status == 200){
+            if(result1[0].status == 200){
                 // 根据请求的书本信息，渲染画面。
-                var book = new Book(result1.data);
+                var book = new Book(result1[0].data);
                 book.initView();
                 tbreader.closeLoading("");
                 $(".container").show();
