@@ -46,14 +46,13 @@ $(document).ready(function(){
         "sign": recomSign
     };
 
-    // 异步请求书籍信息。
+    // 异步请求书籍和推荐书籍信息。
     $.when( createAjax("http://tbwalden.ishuqi.com/andapi/book/info", bookParam),
             createAjax("http://tbwalden.ishuqi.com/andapi/booklist/recom", recomParam)
             )
         .done(function (bookResult, recomResult) {
             alert("返回的结果1是：" + bookResult[0].status + ", 返回的结果2是：" + bookResult[0].status);
             if(bookResult[0].status == 200 && recomResult[0].status == 200){
-                alert("作者ID：" + bookResult[0].data.authorId);
                 // 设置作者其他作品的请求参数。
                 var proListData = {"authorId": bookResult[0].data.authorId, "timestamp": timestamp.toString(), "pageSize": 3, "page": 1};
                 var proListParam = {
@@ -70,7 +69,7 @@ $(document).ready(function(){
                     .done(function (proListResult) {
                         alert("作者其他作品的结果是：" + proListResult.status);
                         // 渲染书籍信息画面。
-                        var book = new Book(bookResult[0].data, recomResult[0].data);
+                        var book = new Book(bookResult[0].data, recomResult[0].data, proListResult.data);
                         book.initView();
                         tbreader.closeLoading("");
                         $(".container").show();
@@ -85,10 +84,11 @@ $(document).ready(function(){
  * @param bookInfo
  * @constructor
  */
-function Book(book, recomBookList) {
+function Book(book, recomBookList, proList) {
     var self = this;
     self.book = book;
     self.recom = recomBookList;
+    self.proList = proList;
 }
 
 Book.prototype = {
@@ -129,6 +129,14 @@ Book.prototype = {
             oFragment.appendChild(oLi);
         }
         $(".recom .title").after(this.createNav(oFragment));
+
+        oFragment = document.createDocumentFragment();
+        for(var i = 0, count = this.proList.bookList.length; i < count; ++i) {
+            var oLi = document.createElement("li");
+            oLi.innerHTML = "<a href='###'>" + this.proList.bookList[i].bookName + "</a>";
+            oFragment.appendChild(oLi);
+        }
+        $(".author-other-books .title").after(this.createNav(oFragment));
     },
     createNav: function (oFragment) {
         var oNAV = document.createElement("nav");
