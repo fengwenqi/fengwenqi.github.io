@@ -19,18 +19,48 @@ $(document).ready(function(){
 
 
     // 异步请求书籍信息。
-    $.post("http://tbwalden.ishuqi.com/andapi/book/info",
-        {
-            "data": JSON.stringify(data),
-            "encryptType": -1,
-            "tsid": tsid,
-            "placeId": placeId,
-            "appVer": appVer,
-            "sign": sign
-        },
-        function (result, status) {
+    // $.post("http://tbwalden.ishuqi.com/andapi/book/info",
+    //     {
+    //         "data": JSON.stringify(data),
+    //         "encryptType": -1,
+    //         "tsid": tsid,
+    //         "placeId": placeId,
+    //         "appVer": appVer,
+    //         "sign": sign
+    //     },
+    //     function (result, status) {
+    //         alert("返回的状态是：" + result.status + ", 返回的书名是：" + result.data.bookName);
+    //         if(status == "success" && result.status == 200){
+    //             // 根据请求的书本信息，渲染画面。
+    //             var book = new Book(result.data);
+    //             book.initView();
+    //             tbreader.closeLoading("");
+    //             $(".container").show();
+    //         }
+    //     });
+
+    var createAjax = function(url, data) {
+        return $.ajax({
+            type: "POST",
+            url: url,
+            async: true,
+            cache: false,
+            data: data
+        });
+    };
+
+    var bookParam = {
+        "data": JSON.stringify(data),
+        "encryptType": -1,
+        "tsid": tsid,
+        "placeId": placeId,
+        "appVer": appVer,
+        "sign": sign
+    };
+    $.when(createAjax("http://tbwalden.ishuqi.com/andapi/book/info", bookParam))
+        .done(function (result) {
             alert("返回的状态是：" + result.status + ", 返回的书名是：" + result.data.bookName);
-            if(status == "success" && result.status == 200){
+            if(result.status == 200){
                 // 根据请求的书本信息，渲染画面。
                 var book = new Book(result.data);
                 book.initView();
@@ -38,36 +68,6 @@ $(document).ready(function(){
                 $(".container").show();
             }
         });
-
-    // var createAjax = function(url, data) {
-    //     return $.ajax({
-    //         type: "POST",
-    //         url: url,
-    //         async: true,
-    //         cache: false,
-    //         data: data
-    //     });
-    // };
-    //
-    // var bookParam = {
-    //     "data": JSON.stringify(data),
-    //     "encryptType": -1,
-    //     "tsid": tsid,
-    //     "placeId": placeId,
-    //     "appVer": appVer,
-    //     "sign": sign
-    // };
-    // $.when(createAjax("http://tbwalden.ishuqi.com/andapi/book/info", bookParam))
-    //     .done(function (result) {
-    //         alert("返回的状态是：" + result.status + ", 返回的书名是：" + result.data.bookName);
-    //         if(result.status == 200){
-    //             alert("data=" + result.data.authorName);
-    //             // 根据请求的书本信息，渲染画面。
-    //             var book = new Book(result.data);
-    //             book.initView();
-    //             $(".container").show();
-    //         }
-    //     });
 });
 
 /**
