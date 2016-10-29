@@ -34,6 +34,7 @@ $(document).ready(function(){
                 // 根据请求的书本信息，渲染画面。
                 var book = new Book(result.data);
                 book.initView();
+                tbreader.closeLoading("");
                 $(".container").show();
             }
         });
