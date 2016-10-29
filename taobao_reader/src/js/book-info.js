@@ -67,7 +67,8 @@ $(document).ready(function(){
     };
     $.when(createAjax("http://tbwalden.ishuqi.com/andapi/book/info", bookParam),createAjax("http://tbwalden.ishuqi.com/andapi/booklist/recom", recomParam))
         .done(function (result1) {
-            alert("返回的状态是：" + result1.status + ", 返回的书名是：" + result1.data);
+            alert("返回的结果是：" + result1);
+            // alert("返回的状态是：" + result1.status + ", 返回的书名是：" + result1.data.bookName);
             // alert("返回的状态是：" + result2.status + ", 返回的书名是：" + result2.data);
             if(result1.status == 200){
                 // 根据请求的书本信息，渲染画面。
