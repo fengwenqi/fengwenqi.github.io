@@ -51,7 +51,6 @@ $(document).ready(function(){
             createAjax("http://tbwalden.ishuqi.com/andapi/booklist/recom", recomParam)
             )
         .done(function (bookResult, recomResult) {
-            alert("返回的结果1是：" + bookResult[0].status + ", 返回的结果2是：" + bookResult[0].status);
             if(bookResult[0].status == 200 && recomResult[0].status == 200){
                 // 设置作者其他作品的请求参数。
                 var proListData = {"authorId": bookResult[0].data.authorId, "timestamp": timestamp.toString(), "pageSize": 3, "page": 1};
@@ -67,7 +66,6 @@ $(document).ready(function(){
                 // 异步请求作者其他作品。
                 createAjax("http://tbwalden.ishuqi.com/andapi/author/prolist", proListParam)
                     .done(function (proListResult) {
-                        alert("作者其他作品的结果是：" + proListResult.status);
                         // 渲染书籍信息画面。
                         var book = new Book(bookResult[0].data, recomResult[0].data, proListResult.data);
                         book.initView();
@@ -112,6 +110,7 @@ Book.prototype = {
         $(".desc").text(this.book.desc);
         $("#author-introduce").text(this.book.authorName);
 
+        // tag
         var oFragment = document.createDocumentFragment();
         for(var i = 0, count = this.book.tag.length; i < count; ++i) {
             var oLi = document.createElement("li");
@@ -120,6 +119,7 @@ Book.prototype = {
         }
         $(".tags").append(this.createNav(oFragment));
 
+        // 推荐书籍
         oFragment = document.createDocumentFragment();
         for(var i = 0, count = this.recom.bookList.length; i < count; ++i) {
             var oLi = document.createElement("li");
@@ -130,6 +130,7 @@ Book.prototype = {
         }
         $(".recom .title").after(this.createNav(oFragment));
 
+        // 作者的作品
         oFragment = document.createDocumentFragment();
         for(var i = 0, count = this.proList.bookList.length; i < count; ++i) {
             var oLi = document.createElement("li");
@@ -137,6 +138,13 @@ Book.prototype = {
             oFragment.appendChild(oLi);
         }
         $(".author-other-books .title").after(this.createNav(oFragment));
+
+        // 出版信息
+        var publish = "<section><p> 出版：" + this.book.pubInfo.isbn + "<br/>"
+                        + "字数：" + this.book.words + "万字<br/>"
+                        + "ISBN：" + this.book.pubInfo.press +"<br/>"
+                        + "出版时间：" + this.book.pubInfo.pubTime + "</p><section>";
+        $(".publish-info aside").before(publish);
     },
     createNav: function (oFragment) {
         var oNAV = document.createElement("nav");
