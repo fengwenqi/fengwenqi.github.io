@@ -55,21 +55,21 @@ $(document).ready(function(){
         "appVer": appVer,
         "sign": sign
     };
-    var recomData = {"bookId": bookId, "pageSize": 3, "timestamp": timestamp.toString()};
-    var sign = md5(JSON.stringify(recomData)+md5key);
+    var recomData = {"bookId": parseInt(bookId), "pageSize": 3, "timestamp": timestamp};
+    var recomSign = md5(JSON.stringify(recomData)+md5key);
     var recomParam = {
         "data": JSON.stringify(recomData),
         "encryptType": -1,
         "tsid": tsid,
         "placeId": placeId,
         "appVer": appVer,
-        "sign": sign
+        "sign": recomSign
     };
-    $.when( createAjax("http://tbwalden.ishuqi.com/andapi/book/info", bookParam),
+    $.when(createAjax("http://tbwalden.ishuqi.com/andapi/book/info", bookParam),
             createAjax("http://tbwalden.ishuqi.com/andapi/booklist/recom", recomParam))
         .done(function (result1, result2) {
-            // alert("返回的状态是：" + result1.status + ", 返回的书名是：" + result1.data.bookName);
-            alert("返回的状态是：" + result2.status + ", 返回的书名是：" + result2.data.bookName);
+            alert("返回的状态是：" + result1.status + ", 返回的书名是：" + result1.data.bookName);
+            alert("返回的状态是：" + result2.status + ", 返回的书名是：" + result2.data);
             if(result1.status == 200){
                 // 根据请求的书本信息，渲染画面。
                 var book = new Book(result1.data);
