@@ -68,11 +68,9 @@ $(document).ready(function(){
     $.when(createAjax("http://tbwalden.ishuqi.com/andapi/book/info", bookParam),createAjax("http://tbwalden.ishuqi.com/andapi/booklist/recom", recomParam))
         .done(function (result1, result2) {
             alert("返回的结果1是：" + result1[0].status + ", 返回的结果2是：" + result1[0].status);
-            // alert("返回的状态是：" + result1.status + ", 返回的书名是：" + result1.data.bookName);
-            // alert("返回的状态是：" + result2.status + ", 返回的书名是：" + result2.data);
-            if(result1[0].status == 200){
-                // 根据请求的书本信息，渲染画面。
-                var book = new Book(result1[0].data);
+            if(result1[0].status == 200 && result2[0].status == 200){
+                // 渲染书籍信息画面。
+                var book = new Book(result1[0].data, result2[0].data);
                 book.initView();
                 tbreader.closeLoading("");
                 $(".container").show();
@@ -86,9 +84,10 @@ $(document).ready(function(){
  * @param bookInfo
  * @constructor
  */
-function Book(book) {
+function Book(book, recomBookList) {
     var self = this;
     self.book = book;
+    self.recom = recomBookList;
 }
 
 Book.prototype = {
@@ -120,6 +119,17 @@ Book.prototype = {
             oFragment.appendChild(oLi);
         }
         $(".tags").append(this.createNav(oFragment));
+
+        oFragment = document.createDocumentFragment();
+        alert("推荐书籍信息：" + JSON.stringify(this.recom.bookList));
+        for(var i = 0, count = this.recom.bookList.length; i < count; ++i) {
+            var oLi = document.createElement("li");
+            oLi.innerHTML = "<a href='###'><img src='" + this.recom.bookList[i].coverUrl + "'/>"
+            + "<h2 class='book-name'>" + this.recom.bookList[i].bookName + "</h2>"
+            + "<h3 class='author-name'>" + this.recom.bookList[i].authorName + "</h3></a>";
+            oFragment.appendChild(oLi);
+        }
+        $(".recom .title").after(this.createNav(oFragment));
     },
     createNav: function (oFragment) {
         var oNAV = document.createElement("nav");
