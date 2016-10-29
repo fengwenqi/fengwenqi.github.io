@@ -8,15 +8,10 @@ $(document).ready(function(){
     var tsid = getQueryString("tsid");
     var placeId = getQueryString("placeId");
     var appVer = getQueryString("appVer");
-
-    // 设置请求数据。
-    var data = {"bookId": bookId, "timestamp": timestamp.toString()};
     var md5key = '37e81a9d8f02596e1b895d07c171d5c9';
-    var sign = md5(JSON.stringify(data)+md5key);
 
     // 初期隐藏画面。
     $(".container").hide();
-
 
     // 异步请求书籍信息。
     // $.post("http://tbwalden.ishuqi.com/andapi/book/info",
@@ -49,6 +44,9 @@ $(document).ready(function(){
         });
     };
 
+    // 设置请求数据。
+    var data = {"bookId": bookId, "timestamp": timestamp.toString()};
+    var sign = md5(JSON.stringify(data)+md5key);
     var bookParam = {
         "data": JSON.stringify(data),
         "encryptType": -1,
@@ -57,12 +55,24 @@ $(document).ready(function(){
         "appVer": appVer,
         "sign": sign
     };
-    $.when(createAjax("http://tbwalden.ishuqi.com/andapi/book/info", bookParam))
-        .done(function (result) {
-            alert("返回的状态是：" + result.status + ", 返回的书名是：" + result.data.bookName);
-            if(result.status == 200){
+    var recomData = {"bookId": bookId, "pageSize": 3, "timestamp": timestamp.toString()};
+    var sign = md5(JSON.stringify(recomData)+md5key);
+    var recomParam = {
+        "data": JSON.stringify(recomData),
+        "encryptType": -1,
+        "tsid": tsid,
+        "placeId": placeId,
+        "appVer": appVer,
+        "sign": sign
+    };
+    $.when( createAjax("http://tbwalden.ishuqi.com/andapi/book/info", bookParam),
+            createAjax("http://tbwalden.ishuqi.com/andapi/booklist/recom", recomParam))
+        .done(function (result1, result2) {
+            // alert("返回的状态是：" + result1.status + ", 返回的书名是：" + result1.data.bookName);
+            alert("返回的状态是：" + result2.status + ", 返回的书名是：" + result2.data.bookName);
+            if(result1.status == 200){
                 // 根据请求的书本信息，渲染画面。
-                var book = new Book(result.data);
+                var book = new Book(result1.data);
                 book.initView();
                 tbreader.closeLoading("");
                 $(".container").show();
