@@ -91,6 +91,7 @@ function Book(book, recomBookList, proList) {
 
 Book.prototype = {
     initView: function () {
+        var self = this;
         $(".top #cover img").attr("src", this.book.coverUrl);
         $("#book-name").text(this.book.bookName);
         $("#author-name").text(this.book.authorName);
@@ -107,7 +108,14 @@ Book.prototype = {
         }else if(this.book.disType == "11") {
             $(".sale-deadline").show();
         }
-        $(".desc").text(this.book.desc);
+        $(".desc").text(limitText(this.book.desc, 100));
+        $(".desc").click(function () {
+            if($(".desc").text().indexOf("...") > -1){
+                $(".desc").text(self.book.desc + "∧");
+            }else {
+                $(".desc").text(limitText(self.book.desc, 100));
+            }
+        });
         $("#author-introduce").text(this.book.authorName);
 
         // tag
@@ -156,3 +164,19 @@ Book.prototype = {
         return oNAV;
     }
 }
+
+var limitText = function (text, maxLen) {
+    var retTxt = "";
+    if(typeof text == "string") {
+        var txtLen = text.length;
+        var ellipsisDown = "... ∨";
+        if(txtLen <= maxLen) {
+            retTxt = text;
+        }else {
+            retTxt = text.substr(0, maxLen);
+        }
+        retTxt += ellipsisDown;
+    }
+    return retTxt;
+};
+
