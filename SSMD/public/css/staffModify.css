@@ -1,0 +1,28 @@
+.staff-modify-container{
+    width: 96%;
+    height:768px;
+    margin: 0px auto;
+}
+.text-right {
+    text-align: right;
+}
+.staff-modify-main {
+    width: 100%;
+    height: 700px;
+    padding:0px 10%;
+}
+.staff-modify-main .control-label {
+    font-size: 20px;
+    font-family: "MS Gothic";
+    font-weight: bold;
+    padding-top: 10px !important;
+}
+.staff-modify-main div {
+    padding-top: 5px !important;
+}
+.radio-inline {
+    vertical-align: middle;
+}
+.radio-inline span {
+    margin-top: -5px;
+}

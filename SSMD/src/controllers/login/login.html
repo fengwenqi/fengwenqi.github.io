@@ -1,0 +1,57 @@
+<div class="container">
+    <div class="loginBox row">
+        <form role="form" name="loginForm" id="loginForm"
+              novalidate class="form-horizontal css-form">
+            <div class="vc">
+                <div class="vci">
+                    <div class="content">
+                        <h1 class="text-center">SSJ部门职员管理</h1>
+                        <div class="avtar">
+                            <img src="../../../public/images/logo_SSJ.gif"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="username" class="col-sm-2 col-md-2 control-label">用户</label>
+                <div class="col-sm-10 col-md-10">
+                    <input type="text" class="form-control" id="username"
+                           ng-model="vm.dto.username"
+                           name="username" placeholder="请输入用户名" required
+                           half-width set-focus enter-focus>
+                    <div ng-show="loginForm.$submitted || loginForm.username.$touched">
+                        <span class="formtips" ng-show="loginForm.username.$error.required" >请输入用户名</span>
+                        <span class="formtips" ng-show="loginForm.username.$error.halfWidth">请输入半角字符</span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password" class="col-sm-2 col-md-2 control-label">密码</label>
+                <div class="col-sm-10 col-md-10">
+                    <input type="password" class="form-control" id="password"
+                           ng-model="vm.dto.password"
+                           ng-class="{ 'error' :(loginForm.password.$error.required ||
+                                                loginForm.password.$error.halfWidth) &&
+                                                vm.dto.submitStatus }"
+                           name="password" placeholder="请输入密码" required
+                           half-width enter-focus>
+                    <!-- 加上 vm.dto.submitStatus 主要是考虑到IE的兼容性 -->
+                    <div ng-show="loginForm.$submitted || loginForm.password.$touched || vm.dto.submitStatus">
+                        <span class="formtips" ng-show="loginForm.password.$error.required">请输入密码</span>
+                        <span class="formtips" ng-show="loginForm.password.$error.halfWidth">请输入半角字符</span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group login-button">
+                <div class="col-sm-offset-4 col-sm-10 col-md-10">
+                    <button type="button"
+                            style="width: 100px; height: 40px;"
+                            ng-click="vm.login(loginForm.$valid)">
+                        <span ng-show="vm.dto.submitting">登录中...</span>
+                        <span ng-show="!vm.dto.submitting">登录</span>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

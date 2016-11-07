@@ -1,0 +1,73 @@
+body{
+    background-color: #DBEEF4;
+    font-family: "MS Gothic";
+}
+.staff-list-container{
+    width: 80%;
+    height:768px;
+    margin: 0px auto;
+}
+.stuff-list-form {
+    width: 100%;
+    height: 100%;
+}
+.header{
+    width: 100%;
+    height: 68px;
+}
+.header-content {
+    width: 100%;
+    display: inline-block;
+    padding-top:15px;
+    padding-bottom:10px;
+}
+.header-content span {
+    font-size: 25px;
+    font-weight: bold;
+}
+.header-content input {
+    padding: 4px 20px;
+    font-size:16px;
+    font-weight: bold;
+}
+.seperate-line {
+    width: 100%;
+    height: 2px;
+    background-color: #5387C5;
+}
+.main{
+    width: 100%;
+    height: 700px;
+}
+#searchKey {
+    margin-top: 10px;
+}
+span.formtips {
+    color: red;
+    font-size: 12px;
+    font-weight: bold;
+}
+#searchResult {
+    padding: 10px 20px;
+}
+.comment{
+    width: 100%;
+    text-align: right;
+    font-weight: bold;
+}
+.gridStyle {
+    width: 100%;
+    height: 550px;
+}
+.gridHeaderCell {
+     text-align: center;
+}
+.gridCell {
+    text-align: center;
+}
+.ui-grid-invisible{
+    display: none !important;
+}
+[role="button"] {
+    cursor: auto;
+}

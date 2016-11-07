@@ -1,0 +1,199 @@
+<div class="staff-modify-container">
+    <form class="form-horizontal stuff-list-form" ng-submit="vm.save()" name="modifyForm" role="form">
+        <div class="header">
+            <div class="header-content">
+                <div style="float:left;">
+                    <span ng-if="vm.ps.pageStatus === '2'">职员信息变更</span>
+                    <span ng-if="vm.ps.pageStatus === '1'">职员信息追加</span>
+                </div>
+                <div style="float: right;">
+                    <input type="submit" value="保存"/>
+                    <input type="button" ng-click="vm.close()" value="关闭"/>
+                </div>
+            </div>
+            <div class="seperate-line"></div>
+        </div><!-- header end -->
+
+        <div class="staff-modify-main">
+            <div class="form-group">
+                <label class="col-md-2 control-label">工号：</label>
+                <div class="col-md-4">
+                    <input type="text"
+                           name="id"
+                           ng-value="vm.dto.id"
+                           class="form-control"
+                           ng-model="vm.dto.id"
+                           required
+                           half-width
+                           ng-disabled="vm.ps.pageStatus === '2'">
+                    <div ng-show="modifyForm.$submitted || modifyForm.id.$touched"></div>
+                </div>
+                <label class="col-md-2 control-label">姓名：</label>
+                <div class="col-md-4">
+                    <input type="text"
+                           ng-model="vm.dto.name"
+                           class="form-control"
+                           required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label">性别：</label>
+                <div class="col-md-4">
+                    <label class="radio-inline control-label">
+                        <input type="radio"
+                               name="sex"
+                               ng-model="vm.dto.sex"
+                               value="1"
+                               ng-checked="vm.dto.sex === '1'"> <span>男</span>
+                    </label>
+                    <label class="radio-inline control-label">
+                        <input type="radio"
+                               name="sex"
+                               ng-model="vm.dto.sex"
+                               value="2"
+                               ng-checked="vm.dto.sex === '2'"> <span>女</span>
+                    </label>
+                </div>
+                <label class="col-md-2 control-label">年龄：</label>
+                <div class="col-md-3">
+                    <input type="text"
+                           ng-model="vm.dto.age"
+                           class="form-control text-right"
+                           required
+                           half-width>
+                </div>
+                <label class="col-md-1 control-label" style="text-align: left;">岁</label>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label">在职：</label>
+                <div class="col-md-4">
+                    <label class="radio-inline control-label">
+                        <input type="radio"
+                               name="workFlag"
+                               ng-model="vm.dto.workFlag"
+                               value="1"
+                               ng-checked="vm.dto.workFlag === '1'"> 是
+                    </label>
+                    <label class="radio-inline control-label">
+                        <input type="radio"
+                               name="workFlag"
+                               ng-model="vm.dto.workFlag"
+                               value="0"
+                               ng-checked="vm.dto.workFlag === '0'"> 否
+                    </label>
+                </div>
+                <label class="col-md-2 control-label">电话：</label>
+                <div class="col-md-4">
+                    <input type="tel"
+                           ng-model="vm.dto.tel"
+                           class="form-control"
+                           required
+                           half-width>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label">级别：</label>
+                <!-- 变更内容 -->
+                <div ng-if="vm.ps.pageStatus === '2'" class="col-md-4">
+                    <select class="form-control"
+                            ng-model="vm.dto.level"
+                            ng-options="levelItem.id as levelItem.value disable when levelItem.id==0 for levelItem in vm.levelList" required>
+                    </select>
+                </div>
+                <!-- 追加内容 -->
+                <div ng-if="vm.ps.pageStatus === '1'" class="col-md-4">
+                    <select class="form-control"
+                            ng-model="vm.dto.level"
+                            ng-options="levelItem.id as levelItem.value disable when levelItem.id==0 for levelItem in vm.levelList" required>
+                    </select>
+                </div>
+                <label class="col-md-2 control-label">职能：</label>
+                <div class="col-md-4">
+                    <input type="text"
+                           ng-model="vm.dto.role"
+                           class="form-control"
+                           required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label">工作经验：</label>
+                <div class="col-md-2">
+                    <input type="text"
+                           class="form-control text-right"
+                           ng-model="vm.dto.workAge"
+                           half-width>
+                    </input>
+                </div>
+                <label class="col-md-2 control-label" style="text-align: left;">年</label>
+                <label class="col-md-2 control-label">邮件地址：</label>
+                <div class="col-md-4">
+                    <input type="email"
+                           ng-model="vm.dto.eMail"
+                           class="form-control"
+                           half-width
+                           placeholder="">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label">目前项目：</label>
+                <div class="col-md-4">
+                    <input type="text"
+                           ng-model="vm.dto.curProject"
+                           class="form-control"
+                           placeholder="">
+                </div>
+                <label class="col-md-2 control-label">项目期间：</label>
+                <div class="col-md-4">
+                    <input type="text"
+                           ng-model="vm.dto.curProjectWorkTime"
+                           class="form-control"
+                           placeholder="">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label">资产编号：</label>
+                <div class="col-md-4">
+                    <input type="text"
+                           ng-model="vm.dto.assetNum"
+                           class="form-control"
+                           placeholder=""
+                           half-width>
+                </div>
+                <label class="col-md-2 control-label">工作地点：</label>
+                <div class="col-md-4">
+                    <input type="text"
+                           ng-model="vm.dto.workPlace"
+                           class="form-control"
+                           placeholder="">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label">擅长语言：</label>
+                <div class="col-md-4">
+                    <label class="control-label" >
+                        <input type="checkbox" name="language"
+                               ng-model="vm.language.jp"/> 日语
+                    </label>
+                    <label class="control-label">
+                        <input type="checkbox" name="language"
+                               ng-model="vm.language.en"/> 英语
+                    </label>
+                </div>
+                <label class="col-md-2 control-label">语言级别：</label>
+                <div class="col-md-4">
+                    <input type="text"
+                           ng-model="vm.dto.languageLevel"
+                           class="form-control"
+                           placeholder="">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label">擅长技术：</label>
+                <div class="col-md-4">
+                            <textarea ng-model="vm.dto.tecknology"
+                                      class="form-control"></textarea>
+                </div>
+            </div>
+        </div><!-- main end -->
+    </form>
+</div>

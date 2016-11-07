@@ -1,0 +1,55 @@
+*{margin:0;padding: 0;}
+.loginBox{
+    width:420px;
+    height:280px;
+    padding:0 20px;
+    margin-top:40px;
+    border-radius:8px;font:15px/1.5em 'Microsoft YaHei' ;
+    position: absolute;
+    left: 50%;
+    right: 50%;
+    top: 30%;
+    margin-left:-230px;
+    margin-top:-165px;
+}
+.loginBox h1{height:45px;font-size:45px;font-weight:normal;}
+.loginBox .left{border-right:1px solid #ccc;height:100%;padding-right: 20px; }
+.css-form input.ng-invalid.ng-touched {
+    /*background-color: #FA787E;*/
+    border-color: #FA787E;
+}
+
+.css-form input.ng-valid.ng-touched {
+    /*background-color: #78FA89;*/
+    border-color: #78FA89;
+}
+.avtar img {
+    width: 600px;
+    height: 200px;
+    margin: 40px auto;
+}
+.vc {
+    margin: 5% auto;
+    display:table;
+    overflow:hidden;
+    _position:relative;
+    margin-left:-85px;
+}
+.vci {
+    vertical-align:middle;
+    display:table-cell;
+    text-align:center;
+    _position:absolute;
+    _top:50%;
+    _left:50%;
+}
+.content {
+    display:inline-block;
+    _position:relative;
+}
+.login-button {
+    margin: 10% auto;
+}
+.error {
+    border-color: #FA787E;
+}

@@ -1,0 +1,70 @@
+<div class="staff-info-container">
+   <form class="form-horizontal stuff-list-form" role="form" name="staffInfoForm">
+      <div class="header">
+         <div class="header-content">
+            <div style="float:left;"><span>职员信息表示</span></div>
+            <div style="float: right;">
+               <input type="button" id="delete" value="消除" ng-disabled="vm.isDelDisable" ng-click="vm.delete()"/>
+               <input type="button" id="update" value="变更" ng-disabled="vm.isUpdDisable" ng-click="vm.update()"/>
+               <input type="button" id="close" value="关闭" ng-click="vm.close()"/>
+            </div>
+         </div>
+         <div class="seperate-line"></div>
+      </div><!-- header end -->
+
+      <div class="staff-info-main">
+          <div class="form-group">
+              <label class="col-md-2 control-label">工号：</label>
+              <label class="col-md-4 control-label staff-value" ng-bind="vm.staff.id"></label>
+              <label class="col-md-2 control-label">姓名：</label>
+              <label class="col-md-4 control-label staff-value" ng-bind="vm.staff.name"></label>
+          </div>
+          <div class="form-group">
+              <label class="col-md-2 control-label">性别：</label>
+              <label class="col-md-4 control-label staff-value" ng-bind="vm.staff.sexNm"></label>
+              <label class="col-md-2 control-label">年龄：</label>
+              <label class="col-md-4 control-label staff-value" ng-bind="vm.staff.age+'岁'"></label>
+          </div>
+          <div class="form-group">
+              <label class="col-md-2 control-label">在职：</label>
+              <label class="col-md-4 control-label staff-value" ng-bind="vm.staff.workFlagNm"></label>
+              <label class="col-md-2 control-label">电话：</label>
+              <label class="col-md-4 control-label staff-value" ng-bind="vm.staff.tel"></label>
+          </div>
+          <div class="form-group">
+              <label class="col-md-2 control-label">级别：</label>
+              <label class="col-md-4 control-label staff-value" ng-bind="vm.staff.levelNm"></label>
+              <label class="col-md-2 control-label">职能：</label>
+              <label class="col-md-4 control-label staff-value" ng-bind="vm.staff.role"></label>
+          </div>
+          <div class="form-group">
+              <label class="col-md-2 control-label">工作经验：</label>
+              <label class="col-md-4 control-label staff-value" ng-bind="vm.staff.workAge+'年'"></label>
+              <label class="col-md-2 control-label">邮件地址：</label>
+              <label class="col-md-4 control-label staff-value" ng-bind="vm.staff.eMail"></label>
+          </div>
+          <div class="form-group">
+              <label class="col-md-2 control-label">目前项目：</label>
+              <label class="col-md-4 control-label staff-value" ng-bind="vm.staff.curProject"></label>
+              <label class="col-md-2 control-label">项目期间：</label>
+              <label class="col-md-4 control-label staff-value" ng-bind="vm.staff.curProjectWorkTime"></label>
+          </div>
+          <div class="form-group">
+              <label class="col-md-2 control-label">资产编号：</label>
+              <label class="col-md-4 control-label staff-value" ng-bind="vm.staff.assetNum"></label>
+              <label class="col-md-2 control-label">工作地点：</label>
+              <label class="col-md-4 control-label staff-value" ng-bind="vm.staff.workPlace"></label>
+          </div>
+          <div class="form-group">
+              <label class="col-md-2 control-label">擅长语言：</label>
+              <label class="col-md-4 control-label staff-value" ng-bind="vm.staff.languageNm"></label>
+              <label class="col-md-2 control-label">语言级别：</label>
+              <label class="col-md-4 control-label staff-value" ng-bind="vm.staff.languageLevel"></label>
+          </div>
+          <div class="form-group">
+              <label class="col-md-2 control-label">擅长技术：</label>
+              <pre class="col-md-4 control-label staff-value" ng-bind="vm.staff.tecknology"></pre>
+          </div>
+      </div><!-- main end -->
+   </form>
+</div>
