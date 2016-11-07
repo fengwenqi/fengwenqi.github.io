@@ -45,5 +45,6 @@ docs/**/*
 **/.idea/runConfigurations.xml
 
 taobao_reader/node_modules/
+SSMD/node_modules/
 
 
