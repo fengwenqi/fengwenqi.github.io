@@ -185,15 +185,18 @@ var limitText = function (text, maxLen) {
     return retTxt;
 };
 function showBookCover() {
-    alert("showBookCover");
-    var bookPara = {
-        "page":"bookCover",
-        "params":{
-            "bookSource":1,
-            "bookId":book.bookId,
-            "bookName":book.bookName,
-            "topClass":book.topClass
-        }
-    };
-    tbreader.openAppPage(JSON.stringify(bookPara));
+    alert("aaaa");
 };
+// showBookCover: function (book) {
+//     alert("showBookCover");
+//     var bookPara = {
+//         "page":"bookCover",
+//         "params":{
+//             "bookSource":1,
+//             "bookId":book.bookId,
+//             "bookName":book.bookName,
+//             "topClass":book.topClass
+//         }
+//     };
+//     tbreader.openAppPage(JSON.stringify(bookPara));
+// }
