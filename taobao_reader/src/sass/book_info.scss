@@ -160,7 +160,7 @@ article.book {
         @extend %init-list;
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-between;
+        justify-content: flex-start;
         align-content: space-between;
         li:not(:last-child){
           margin-right: size(31.3);

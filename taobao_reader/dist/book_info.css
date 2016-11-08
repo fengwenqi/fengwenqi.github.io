@@ -146,9 +146,9 @@ article.book section.tags nav {
     display: flex;
     -webkit-flex-wrap: wrap;
             flex-wrap: wrap;
-    -webkit-box-pack: justify;
-    -webkit-justify-content: space-between;
-            justify-content: space-between;
+    -webkit-box-pack: start;
+    -webkit-justify-content: flex-start;
+            justify-content: flex-start;
     -webkit-align-content: space-between;
             align-content: space-between; }
     article.book section.tags nav ul li:not(:last-child) {
