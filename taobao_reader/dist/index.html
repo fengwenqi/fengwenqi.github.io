@@ -280,10 +280,9 @@ Book.prototype = {
         oFragment = document.createDocumentFragment();
         aLi.length = 0;
         // var txt = "AAA";
-        var showBookCover = this.showBookCover;
         for(var i = 0, count = this.recom.bookList.length; i < count; ++i) {
             // aLi.push("<li><a href='###' onclick='alert(1);'>" +
-            aLi.push("<li><a href='###' onclick='showBookCover();'>" +
+            aLi.push("<li><a href='###' onclick='showBookCover()'>" +
                 "<img src='" + this.recom.bookList[i].coverUrl +"'/>"
                 + "<h2 class='book-name'>" + this.recom.bookList[i].bookName + "</h2>"
                 + "<h3 class='author-name'>" + this.recom.bookList[i].authorName + "</h3></a></li>");
@@ -306,20 +305,20 @@ Book.prototype = {
                         + "ISBN：" + this.book.pubInfo.isbn +"<br/>"
                         + "出版时间：" + publishTime.toLocaleDateString() + "</p><section>";
         $(".publish-info aside").before(publish);
-    },
-    showBookCover: function (book) {
-        alert("showBookCover");
-        var bookPara = {
-            "page":"bookCover",
-            "params":{
-                "bookSource":1,
-                "bookId":book.bookId,
-                "bookName":book.bookName,
-                "topClass":book.topClass
-            }
-        };
-        tbreader.openAppPage(JSON.stringify(bookPara));
     }
+    // showBookCover: function (book) {
+    //     alert("showBookCover");
+    //     var bookPara = {
+    //         "page":"bookCover",
+    //         "params":{
+    //             "bookSource":1,
+    //             "bookId":book.bookId,
+    //             "bookName":book.bookName,
+    //             "topClass":book.topClass
+    //         }
+    //     };
+    //     tbreader.openAppPage(JSON.stringify(bookPara));
+    // }
 }
 
 var limitText = function (text, maxLen) {
@@ -335,6 +334,9 @@ var limitText = function (text, maxLen) {
         retTxt += ellipsisDown;
     }
     return retTxt;
+};
+function showBookCover() {
+    alert("aaaa");
 };
 
 
