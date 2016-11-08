@@ -153,6 +153,7 @@ Book.prototype = {
         $(".publish-info aside").before(publish);
     },
     showBookCover: function (book) {
+        alert("showBookCover" + book.bookName);
         var bookPara = {
             "page":"bookCover",
             "params":{
