@@ -69,8 +69,8 @@ $(document).ready(function(){
                         // 渲染书籍信息画面。
                         var book = new Book(bookResult[0].data, recomResult[0].data, proListResult.data);
                         book.initView();
-                        tbreader.closeLoading("");
                         $(".container").show();
+                        tbreader.closeLoading("");
                 });
             }
         });

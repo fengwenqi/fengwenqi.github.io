@@ -1,5 +1,5 @@
 article.book section.top, article.book section.content, article.book section.author p#author-introduce, article.book section.tags, article.recommend-books section, article.author-other-books section, article.publish-info {
-  border-bottom: solid 0.0156rem #E7E7E7; }
+  border-bottom: solid 1px #E7E7E7; }
 
 article.book section.author, article.recommend-books section, article.author-other-books section {
   padding-top: 0.625rem; }
