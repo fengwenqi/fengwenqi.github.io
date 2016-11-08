@@ -138,6 +138,7 @@ Book.prototype = {
         // 作者的作品
         aLi.length = 0;
         var showBookCover = this.showBookCover;
+        alert(typeof showBookCover);
         for(var i = 0, count = this.proList.bookList.length; i < count; ++i) {
             aLi.push("<li><a href='#' onclick='showBookCover("+this.proList.bookList[i]+");return false;'>"
                 + this.proList.bookList[i].bookName +"</a></li>");
