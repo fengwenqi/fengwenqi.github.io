@@ -272,27 +272,25 @@ Book.prototype = {
         // tag
         var aLi = [];
         for(var i = 0, count = this.book.tag.length; i < count; ++i) {
-            aLi.push("<li><a href='###'>" + this.book.tag[i].tagName +"</a></li>")
+            aLi.push("<li><a href='###'>" + this.book.tag[i].tagName +"</a></li>");
         }
         $(".tags").append("<nav><ul>" + aLi.join("") + "</ul></nav>");
 
         // 推荐书籍
         oFragment = document.createDocumentFragment();
+        aLi.length = 0;
         for(var i = 0, count = this.recom.bookList.length; i < count; ++i) {
-            var oLi = document.createElement("li");
-            oLi.innerHTML = "<a href='###'><img src='" + this.recom.bookList[i].coverUrl + "'/>"
-            + "<h2 class='book-name'>" + this.recom.bookList[i].bookName + "</h2>"
-            + "<h3 class='author-name'>" + this.recom.bookList[i].authorName + "</h3></a>";
-            oFragment.appendChild(oLi);
+            aLi.push("<li><a href='###'><img src='" + this.recom.bookList[i].coverUrl +"'/>"
+                + "<h2 class='book-name'>" + this.recom.bookList[i].bookName + "</h2>"
+                + "<h3 class='author-name'>" + this.recom.bookList[i].authorName + "</h3></a></li>");
         }
-        $(".recom .title").after(this.createNav(oFragment));
+        $(".recom .title").after("<nav><ul>" + aLi.join("") + "</ul></nav>");
 
         // 作者的作品
         aLi.length = 0;
         for(var i = 0, count = this.proList.bookList.length; i < count; ++i) {
-            aLi.push("<li><a href='###'>" + this.proList.bookList[i].bookName +"</a></li>")
+            aLi.push("<li><a href='###'>" + this.proList.bookList[i].bookName +"</a></li>");
         }
-        // $(".author-other-books .title").after(this.createNav(oFragment));
         $(".author-other-books .title").after("<nav><ul>" + aLi.join("") + "</ul></nav>");
 
         // 出版信息

@@ -178,7 +178,7 @@ article.recommend-books section nav {
     -webkit-box-pack: justify;
     -webkit-justify-content: space-between;
             justify-content: space-between; }
-  article.recommend-books section nav li:not(:last-child) {
+  article.recommend-books section nav li {
     -webkit-box-flex: 1;
     -webkit-flex: 1;
             flex: 1; }
@@ -191,7 +191,9 @@ article.recommend-books section nav {
       height: 3.28rem; }
     article.recommend-books section nav a .book-name {
       margin-top: 0.31rem;
-      color: #333333; }
+      color: #333333;
+      overflow: hidden;
+      text-overflow: ellipsis; }
       [data-dpr="1"] article.recommend-books section nav a .book-name {
         font-size: 12px; }
       [data-dpr="2"] article.recommend-books section nav a .book-name {
