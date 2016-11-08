@@ -129,8 +129,9 @@ Book.prototype = {
         oFragment = document.createDocumentFragment();
         aLi.length = 0;
         var showBookCover = this.showBookCover;
+        var txt = "AAA"
         for(var i = 0, count = this.recom.bookList.length; i < count; ++i) {
-            aLi.push("<li><a href='###' onclick='showBookCover("+this.recom.bookList[i]+");'>" +
+            aLi.push("<li><a href='###' onclick='alert("+txt+");'>" +
                 "<img src='" + this.recom.bookList[i].coverUrl +"'/>"
                 + "<h2 class='book-name'>" + this.recom.bookList[i].bookName + "</h2>"
                 + "<h3 class='author-name'>" + this.recom.bookList[i].authorName + "</h3></a></li>");
@@ -155,7 +156,7 @@ Book.prototype = {
         $(".publish-info aside").before(publish);
     },
     showBookCover: function (book) {
-        alert("showBookCover" + book.bookName);
+        alert("showBookCover" + book);
         var bookPara = {
             "page":"bookCover",
             "params":{
