@@ -137,7 +137,10 @@ Book.prototype = {
         var aList = document.querySelectorAll(".recom nav a");
         alert("aList="+aList.length);
         for(var i = 0, len = aList.length; i < len; i++) {
-            aList[i].onclick = showBookCover("bbbb");
+            aList[i].book = this.recom.bookList[i];
+            aList[i].onclick = function () {
+                showBookCover(this.book);
+            }
         }
 
         // 作者的作品
