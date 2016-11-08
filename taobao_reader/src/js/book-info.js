@@ -128,8 +128,10 @@ Book.prototype = {
         // 推荐书籍
         oFragment = document.createDocumentFragment();
         aLi.length = 0;
+        var showBookCover = this.showBookCover;
         for(var i = 0, count = this.recom.bookList.length; i < count; ++i) {
-            aLi.push("<li><a href='###'><img src='" + this.recom.bookList[i].coverUrl +"'/>"
+            aLi.push("<li><a href='###' onclick='showBookCover("+this.recom.bookList[i]+");'>" +
+                "<img src='" + this.recom.bookList[i].coverUrl +"'/>"
                 + "<h2 class='book-name'>" + this.recom.bookList[i].bookName + "</h2>"
                 + "<h3 class='author-name'>" + this.recom.bookList[i].authorName + "</h3></a></li>");
         }
@@ -138,8 +140,7 @@ Book.prototype = {
         // 作者的作品
         aLi.length = 0;
         for(var i = 0, count = this.proList.bookList.length; i < count; ++i) {
-            // aLi.push("<li><a href='#' onclick='showBookCover("+this.proList.bookList[i]+");return false;'>"
-            aLi.push("<li><a href='#' onclick='alert("+this.proList.bookList[i].bookName+")'>"
+            aLi.push("<li><a href='#'>"
                 + this.proList.bookList[i].bookName +"</a></li>");
         }
         $(".author-other-books .title").after("<nav><ul>" + aLi.join("") + "</ul></nav>");
