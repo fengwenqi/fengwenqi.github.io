@@ -194,8 +194,7 @@ article.recommend-books section nav {
       margin-top: 0.31rem;
       color: #333333;
       overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap; }
+      text-overflow: ellipsis; }
       [data-dpr="1"] article.recommend-books section nav a .book-name {
         font-size: 12px; }
       [data-dpr="2"] article.recommend-books section nav a .book-name {
