@@ -230,6 +230,8 @@ article.author-other-books section nav {
     -webkit-align-items: stretch;
             align-items: stretch;
     border-top: solid 0.0156rem #E7E7E7; }
+  article.author-other-books section nav li:first-child {
+    border-top: solid 1px #E7E7E7; }
   article.author-other-books section nav a {
     display: block;
     text-decoration: none;

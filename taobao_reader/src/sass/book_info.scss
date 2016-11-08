@@ -252,6 +252,9 @@ article.author-other-books {
       }
       li{
         @extend %bottom-line;
+        &:first-child{
+          border-top: solid 1px #E7E7E7;
+        }
       }
       a {
         @include font-size(14px);
