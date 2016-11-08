@@ -104,7 +104,7 @@ article.book {
     #author-name {
       color: #1EBBDA;
     }
-    #price {
+    #price, #price+.unit{
       text-decoration: line-through;
     }
     .sale-deadline {
