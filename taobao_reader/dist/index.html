@@ -340,15 +340,15 @@ var limitText = function (text, maxLen) {
     return retTxt;
 };
 function showBookCover(book) {
-    alert("bookID: " + book.bookId + ", bookName:" + book.bookName);
+    alert("bookID: " + String(book.bookId) + ", bookName:" + String(book.bookName) + ", topClass:" + String(book.topClass));
 
         var bookPara = {
         "page":"bookCover",
         "params":{
             "bookSource":1,
-            "bookId":book.bookId,
-            "bookName":book.bookName,
-            "topClass":book.topClass
+            "bookId":String(book.bookId),
+            "bookName":String(book.bookName),
+            "topClass":String(book.topClass)
         }
     };
     tbreader.openAppPage(JSON.stringify(bookPara));
