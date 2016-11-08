@@ -221,7 +221,7 @@ article.recommend-books {
           color: #333333;
           overflow: hidden;
           text-overflow: ellipsis;
-          //white-space: nowrap;
+          white-space: nowrap;
         }
         .author-name {
           @include font-size(10px);
