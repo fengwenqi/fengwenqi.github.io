@@ -190,16 +190,22 @@ var limitText = function (text, maxLen) {
     return retTxt;
 };
 function showBookCover(book) {
-    alert("bookID: " + String(book.bookId) + ", bookName:" + String(book.bookName) + ", topClass:" + String(book.topClass));
+    //alert("bookID: " + String(book.bookId) + ", bookName:" + String(book.bookName) + ", topClass:" + String(book.topClass));
 
-    var bookPara = {
-        "page":"bookCover",
-        "params":{
-            "bookSource":1,
-            "bookId":book.bookId.toString(),
-            "bookName":book.bookName.toString(),
-            "topClass":book.topClass.toString()
-        }
+    var bookParam = {
+        "backHome":false,
+        "route":[
+            {
+                "page":"bookCover",
+                "params":{
+                    "bookSource":1,
+                    "bookId":book.bookId.toString(),
+                    "bookName":book.bookName.toString(),
+                    "topClass":book.topClass.toString()
+                }
+            }
+        ]
     };
-    tbreader.openAppPage(JSON.stringify(bookPara));
+
+    tbreader.openAppPage(JSON.stringify(bookParam));
 };
