@@ -138,7 +138,7 @@ Book.prototype = {
         // 作者的作品
         aLi.length = 0;
         for(var i = 0, count = this.proList.bookList.length; i < count; ++i) {
-            aLi.push("<li><a href='#' onclick='showBookCover("+this.proList.bookList[i]+")'>"
+            aLi.push("<li><a href='#' onclick='"+this.showBookCover(this.proList.bookList[i])+"'>"
                 + this.proList.bookList[i].bookName +"</a></li>");
         }
         $(".author-other-books .title").after("<nav><ul>" + aLi.join("") + "</ul></nav>");
