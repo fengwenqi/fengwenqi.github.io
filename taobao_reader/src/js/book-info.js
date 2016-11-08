@@ -139,6 +139,7 @@ Book.prototype = {
             aList[i].book = this.recom.bookList[i];
             aList[i].onclick = function () {
                 showBookCover(this.book);
+                return false;
             }
         }
 
@@ -191,13 +192,13 @@ var limitText = function (text, maxLen) {
 function showBookCover(book) {
     alert("bookID: " + String(book.bookId) + ", bookName:" + String(book.bookName) + ", topClass:" + String(book.topClass));
 
-        var bookPara = {
+    var bookPara = {
         "page":"bookCover",
         "params":{
             "bookSource":1,
-            "bookId":String(book.bookId),
-            "bookName":String(book.bookName),
-            "topClass":String(book.topClass)
+            "bookId":book.bookId.toString(),
+            "bookName":book.bookName.toString(),
+            "topClass":book.topClass.toString()
         }
     };
     tbreader.openAppPage(JSON.stringify(bookPara));
