@@ -135,7 +135,6 @@ Book.prototype = {
         }
         $(".recom .title").after("<nav><ul>" + aLi.join("") + "</ul></nav>");
         var aList = document.querySelectorAll(".recom nav a");
-        alert("aList="+aList.length);
         for(var i = 0, len = aList.length; i < len; i++) {
             aList[i].book = this.recom.bookList[i];
             aList[i].onclick = function () {
@@ -190,7 +189,7 @@ var limitText = function (text, maxLen) {
     return retTxt;
 };
 function showBookCover(book) {
-    alert("showBookCover " + book);
+    alert("bookID: " + book.bookId + ", bookName:" + book.bookName);
 
         var bookPara = {
         "page":"bookCover",
