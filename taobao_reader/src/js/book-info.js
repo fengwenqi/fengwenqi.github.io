@@ -128,9 +128,11 @@ Book.prototype = {
         // 推荐书籍
         oFragment = document.createDocumentFragment();
         aLi.length = 0;
+        // var txt = "AAA";
         var showBookCover = this.showBookCover;
         for(var i = 0, count = this.recom.bookList.length; i < count; ++i) {
-            aLi.push("<li><a href='###' onclick='alert(1);'>" +
+            // aLi.push("<li><a href='###' onclick='alert(1);'>" +
+            aLi.push("<li><a href='###' onclick='showBookCover();'>" +
                 "<img src='" + this.recom.bookList[i].coverUrl +"'/>"
                 + "<h2 class='book-name'>" + this.recom.bookList[i].bookName + "</h2>"
                 + "<h3 class='author-name'>" + this.recom.bookList[i].authorName + "</h3></a></li>");
@@ -155,7 +157,7 @@ Book.prototype = {
         $(".publish-info aside").before(publish);
     },
     showBookCover: function (book) {
-        alert("showBookCover" + book);
+        alert("showBookCover");
         var bookPara = {
             "page":"bookCover",
             "params":{
