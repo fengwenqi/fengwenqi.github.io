@@ -1,4 +1,4 @@
-article.book section.top, article.book section.content, article.book section.author p#author-introduce, article.book section.tags, article.recommend-books section, article.author-other-books section, article.publish-info {
+article.book section.top, article.book section.content, article.book section.author p#author-introduce, article.book section.tags, article.recommend-books section, article.author-other-books section, article.author-other-books section nav li, article.publish-info {
   border-bottom: solid 1px #E7E7E7; }
 
 article.book section.author, article.recommend-books section, article.author-other-books section {
@@ -146,7 +146,9 @@ article.book section.tags nav {
     display: flex;
     -webkit-box-pack: start;
     -webkit-justify-content: flex-start;
-            justify-content: flex-start; }
+            justify-content: flex-start;
+    -webkit-flex-wrap: wrap;
+            flex-wrap: wrap; }
     article.book section.tags nav ul li:not(:last-child) {
       margin-right: 0.313rem; }
     article.book section.tags nav ul a {
@@ -226,8 +228,6 @@ article.author-other-books section nav {
     -webkit-align-items: stretch;
             align-items: stretch;
     border-top: solid 0.0156rem #E7E7E7; }
-  article.author-other-books section nav li {
-    border-bottom: solid 0.0156rem #E7E7E7; }
   article.author-other-books section nav a {
     display: block;
     text-decoration: none;

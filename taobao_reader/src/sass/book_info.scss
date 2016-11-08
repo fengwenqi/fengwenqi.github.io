@@ -18,7 +18,6 @@
   @include data-dpr('font-size', $size);
 }
 %bottom-line {
-  //border-bottom: solid size(1.56) #E7E7E7;
   border-bottom: solid 1px #E7E7E7;
 }
 %section-padding-top {
@@ -161,6 +160,7 @@ article.book {
         @extend %init-list;
         display: flex;
         justify-content: flex-start;
+        flex-wrap: wrap;
         li:not(:last-child){
           margin-right: size(31.3);
         }
@@ -168,6 +168,7 @@ article.book {
           display: block;
           padding: size(7.8) size(31.2);
           text-decoration: none;
+
           border-radius: size(7.8);
         }
         li:nth-child(3n+1) a {
@@ -249,7 +250,7 @@ article.author-other-books {
         border-top: solid size(1.56) #E7E7E7;
       }
       li{
-        border-bottom: solid size(1.56) #E7E7E7;
+        @extend %bottom-line;
       }
       a {
         @include font-size(14px);
