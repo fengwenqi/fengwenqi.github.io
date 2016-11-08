@@ -169,15 +169,15 @@ article.book {
           text-decoration: none;
           border-radius: size(7.8);
         }
-        li:nth-child(1) a {
+        li:nth-child(3n+1) a {
           border: solid size(3) #9FC9FA;
           color: #9FC9FA;
         }
-        li:nth-child(2) a {
+        li:nth-child(3n+2) a {
           border: solid size(3) #FBC791;
           color: #FBC791;
         }
-        li:nth-child(3) a {
+        li:nth-child(3n) a {
           border: solid size(3) #FC9A9A;
           color: #FC9A9A;
         }

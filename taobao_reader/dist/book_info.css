@@ -155,13 +155,13 @@ article.book section.tags nav {
       text-decoration: none;
       -webkit-border-radius: 0.078rem;
               border-radius: 0.078rem; }
-    article.book section.tags nav ul li:nth-child(1) a {
+    article.book section.tags nav ul li:nth-child(3n+1) a {
       border: solid 0.03rem #9FC9FA;
       color: #9FC9FA; }
-    article.book section.tags nav ul li:nth-child(2) a {
+    article.book section.tags nav ul li:nth-child(3n+2) a {
       border: solid 0.03rem #FBC791;
       color: #FBC791; }
-    article.book section.tags nav ul li:nth-child(3) a {
+    article.book section.tags nav ul li:nth-child(3n) a {
       border: solid 0.03rem #FC9A9A;
       color: #FC9A9A; }
 

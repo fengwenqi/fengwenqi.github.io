@@ -119,13 +119,16 @@ Book.prototype = {
         $("#author-introduce").text(this.book.authorName);
 
         // tag
-        var oFragment = document.createDocumentFragment();
+        // var oFragment = document.createDocumentFragment();
+        var aLi = [];
         for(var i = 0, count = this.book.tag.length; i < count; ++i) {
-            var oLi = document.createElement("li");
-            oLi.innerHTML = "<a href='###'>" + this.book.tag[i].tagName +"</a>";
-            oFragment.appendChild(oLi);
+            // var oLi = document.createElement("li");
+            // oLi.innerHTML = "<a href='###'>" + this.book.tag[i].tagName +"</a>";
+            // oFragment.appendChild(oLi);
+            aLi.push("<li><a href='###'>" + this.book.tag[i].tagName +"</a></li>")
         }
-        $(".tags").append(this.createNav(oFragment));
+        // $(".tags").append(this.createNav(oFragment));
+        $(".tags").append("<nav><ul>" + aLi.join("") + "</ul></nav>");
 
         // 推荐书籍
         oFragment = document.createDocumentFragment();

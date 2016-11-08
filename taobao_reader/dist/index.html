@@ -270,13 +270,16 @@ Book.prototype = {
         $("#author-introduce").text(this.book.authorName);
 
         // tag
-        var oFragment = document.createDocumentFragment();
+        // var oFragment = document.createDocumentFragment();
+        var aLi = [];
         for(var i = 0, count = this.book.tag.length; i < count; ++i) {
-            var oLi = document.createElement("li");
-            oLi.innerHTML = "<a href='###'>" + this.book.tag[i].tagName +"</a>";
-            oFragment.appendChild(oLi);
+            // var oLi = document.createElement("li");
+            // oLi.innerHTML = "<a href='###'>" + this.book.tag[i].tagName +"</a>";
+            // oFragment.appendChild(oLi);
+            aLi.push("<li><a href='###'>" + this.book.tag[i].tagName +"</a></li>")
         }
-        $(".tags").append(this.createNav(oFragment));
+        // $(".tags").append(this.createNav(oFragment));
+        $(".tags").append("<nav><ul>" + aLi.join("") + "</ul></nav>");
 
         // 推荐书籍
         oFragment = document.createDocumentFragment();
@@ -352,18 +355,12 @@ var limitText = function (text, maxLen) {
                 </p>
             </section>
             <section class="content">
-                <p class="desc">剑道独尊是剑游太虚所写东方玄幻类网络小说,
-                    连载于起点中文网。作起点中文网。作品讲述
-                    个大家族弟因为起点中文网。剑道独尊是剑游太虚所写东方玄幻类网络小说,
-                    连载于起点中文网。作起点中文网。作品讲述
-                    个大家族弟因为起点中文网。剑道独尊是剑游太虚所写东方玄幻类网络小说,
-                    连载于起点中文网。作起点中文网。作品讲述
-                    个大家族弟因为起点中文网。</p>
+                <p class="desc"></p>
                 <a href="javascript:void(0);" id="gotoChapter">查看目录</a>
             </section>
             <section class="author">
                 <h2 class="title">作者</h2>
-                <p id="author-introduce">出生于德国东部城市格赖夫斯瓦尔德，德国籍足球运动员，场上司职中场，效力于皇家马德里足球俱乐部。后来加入到了拜仁慕尼黑俱乐部。</p>
+                <p id="author-introduce"></p>
             </section>
             <section class="tags">
             </section>
