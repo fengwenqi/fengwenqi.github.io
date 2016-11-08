@@ -216,10 +216,12 @@ article.recommend-books {
         }
         .book-name {
           @include font-size(12px);
+          width: 100%;
           margin-top: size(31);
           color: #333333;
           overflow: hidden;
           text-overflow: ellipsis;
+          white-space: nowrap;
         }
         .author-name {
           @include font-size(10px);
