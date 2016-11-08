@@ -135,8 +135,9 @@ Book.prototype = {
         }
         $(".recom .title").after("<nav><ul>" + aLi.join("") + "</ul></nav>");
         var aList = document.querySelectorAll(".recom nav a");
+        alert("aList="+aList.length);
         for(var i = 0, len = aList.length; i < len; i++) {
-            aList[i].onclick = showBookCover(this.recom.bookList[i]);
+            aList[i].onclick = showBookCover("bbbb");
         }
 
         // 作者的作品
